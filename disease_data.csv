@@ -1,0 +1,95 @@
+English Name,Ayush Name,NAMASTE Code,ICD-11 Code,Biomedicine
+Asthma,Vataja Swasa,N001,CA23,Inhaler/Albuterol
+Diabetes,Prameha,N002,5A11,Insulin/Metformin
+Hypertension,Raktapitta,N003,BA00,Amlodipine/Lisinopril
+Flu,Shita Jwara,N004,1E40,Paracetamol/Oseltamivir
+COVID-19,Kasa Jwara,N005,RA01.0,Remdesivir/Oxygen
+Migraine,Ardhavabhedaka,N006,8A80,Paracetamol/Triptans
+Pneumonia,Shvasa Nija,N007,CA40,Antibiotics/Amoxicillin
+Tuberculosis,Pranavaha Srotas Roga,N008,1B10,ATT Drugs/Isoniazid
+Anemia,Pitta Rakta Naja,N009,3A00,Iron Supplements
+Arthritis,Vataja Sandhigata Naja,N010,FA10,NSAIDs/Glucosamine
+Allergy,Prakupita Dosha,N011,4B20,Antihistamines
+Cholera,Agni Jwara Nija,N012,1A50,ORS/Doxycycline
+Dengue,Rakta Pitta Jwara,N013,1B50,Paracetamol/Fluid Therapy
+Hepatitis,Bijja Jwara Nija,N014,1C30,Antivirals
+Typhoid,Rakta Jwara Nija,N015,1D40,Antibiotics/Ceftriaxone
+Chickenpox,Varicella,N016,1E60,Calamine/Paracetamol
+Measles,Rubeola,N017,1F70,Vaccination/Supportive
+Malaria,Plasmodium Jwara,N018,1G80,Artemisinin/Chloroquine
+Gastritis,Annavaha Naja,N019,5B30,Proton Pump Inhibitors
+Acid Reflux,Annavaha Shula,N020,5B40,Antacids/Omeprazole
+Kidney Stones,Mutravaha Naja,N021,7A10,Hydration/Lithotripsy
+Urinary Tract Infection,Mutravaha Roga,N022,7B20,Antibiotics
+Prostate Enlargement,Ashtivaika Naja,N023,7C30,Finasteride/Tamsulosin
+Breast Cancer,Sthana Roga,N024,2C40,Chemotherapy/Surgery
+Lung Cancer,Pulmonica Roga,N025,2D50,Chemotherapy/Surgery
+Heart Attack,Hridaya Roga,N026,2E60,Aspirin/Angioplasty
+Stroke,Apahata Roga,N027,2F70,Thrombolysis/Rehab
+Obesity,Medo Roga,N028,5F80,Diet/Exercise
+Insomnia,Nidra Roga,N029,6A90,Benzodiazepines
+Depression,Mano Roga,N030,6B10,SSRIs/Psychotherapy
+Anxiety,Chinta Roga,N031,6C20,SSRIs/CBT
+Epilepsy,Apasmara,N032,8B30,Anti-epileptics
+Parkinson,Shivering Roga,N033,8C40,Levodopa
+Alzheimer,Smriti Bhransh,N034,8D50,Donepezil
+Schizophrenia,Mano Vikara,N035,6D60,Antipsychotics
+Autism,Mano Vikas Nija,N036,6E70,Behavior Therapy
+Celiac Disease,Anna Meda Nija,N037,5C10,Gluten-Free Diet
+Crohn's Disease,Ama Roga Nija,N038,5C20,Anti-inflammatories
+Ulcerative Colitis,Annavaha Pitta Nija,N039,5C30,Steroids
+Kidney Failure,Mutravaha Apakshaya,N040,7D40,Dialysis
+Liver Cirrhosis,Yakrit Roga,N041,1H50,Liver Transplant
+Pancreatitis,Annavaha Apakshaya,N042,5D60,Enzymes
+Gout,Asthi Meda Roga,N043,FA30,NSAIDs/Allopurinol
+Osteoporosis,Asthi Kshaya,N044,FA40,Calcium/Vitamin D
+Rheumatoid Arthritis,Vataja Sandhigata Roga,N045,FA50,NSAIDs/DMARDs
+Psoriasis,Kushtha Nija,N046,4C10,Corticosteroids
+Eczema,Twak Nija,N047,4C20,Corticosteroids
+Acne,Twak Pitta Nija,N048,4C30,Topical Retinoids
+Rosacea,Twak Roga Nija,N049,4C40,Topical Metronidazole
+Hyperthyroidism,Shukra Meda Nija,N050,5E10,Antithyroid Drugs
+Hypothyroidism,Shukra Kshaya,N051,5E20,Levothyroxine
+Goiter,Shukra Vridhi,N052,5E30,Surgery
+Anorexia,Medo Kshaya,N053,5F20,Nutritional Therapy
+Bulimia,Medo Vriddhi,N054,5F30,Psychotherapy
+Obstructive Sleep Apnea,Nidra Shvasa Nija,N055,6B30,CPAP
+Chronic Bronchitis,Vataja Shvasa,N056,CA50,Bronchodilators
+Emphysema,Vataja Shvasa Roga,N057,CA60,Bronchodilators
+Pneumothorax,Vataja Shvasa Nija,N058,CA70,Chest Tube
+Appendicitis,Annavaha Pitta Nija,N059,5G10,Surgery
+Hernia,Annavaha Shula Nija,N060,5G20,Surgery
+Gallstones,Annavaha Apakshaya Nija,N061,5H30,Surgery
+Pancreatic Cancer,Annavaha Meda Roga,N062,5D70,Chemotherapy
+Brain Tumor,Shira Roga,N063,8E40,Surgery/Chemotherapy
+Spinal Cord Injury,Moola Sira Nija,N064,8F50,Rehab
+Multiple Sclerosis,Majja Roga,N065,8G60,Immunotherapy
+ALS,Majja Shwasa Nija,N066,8H70,Supportive
+Parkinson Plus,Shira Marga Nija,N067,8I80,Levodopa
+Huntington,Mano Shira Nija,N068,8J90,Supportive
+Fibromyalgia,Vata Meda Nija,N069,FA60,Pain Management
+Chronic Fatigue Syndrome,Medo Shwasa Nija,N070,FA70,Supportive
+Migraine with Aura,Ardhavabhedaka Nija,N071,8A85,Triptans
+Cluster Headache,Shira Roga Nija,N072,8A90,Triptans
+Tension Headache,Shira Roga Nija,N073,8A95,Paracetamol
+Sinusitis,Shira Annavaha Nija,N074,8B00,Decongestants
+Otitis Media,Karna Roga Nija,N075,8B10,Antibiotics
+Conjunctivitis,Nayana Roga Nija,N076,8C10,Eye Drops
+Glaucoma,Nayana Meda Nija,N077,8C20,Eye Drops
+Cataract,Nayana Shula Nija,N078,8C30,Surgery
+Diabetic Retinopathy,Nayana Raktapitta Nija,N079,8C40,Anti-VEGF
+Hypertension Retinopathy,Nayana Rakta Vriddhi,N080,8C50,Blood Pressure Control
+Hyperlipidemia,Medo Rakta Nija,N081,FA80,Statins
+Hypolipidemia,Medo Rakta Kshaya,N082,FA90,Statins
+Coronary Artery Disease,Hridaya Roga Nija,N083,2G10,Angioplasty
+Congestive Heart Failure,Hridaya Shwasa Nija,N084,2G20,Diuretics
+Arrhythmia,Hridaya Vritta Nija,N085,2G30,Antiarrhythmics
+Atrial Fibrillation,Hridaya Vritta Nija,N086,2G40,Antiarrhythmics
+Ventricular Tachycardia,Hridaya Vritta Nija,N087,2G50,Antiarrhythmics
+Stroke Rehab,Apahata Roga Nija,N088,2F70,Rehabilitation
+Epistaxis,Nasa Roga Nija,N089,8D10,Compression
+Hemophilia,Rakta Kshaya Nija,N090,3C10,Blood Transfusion
+Leukemia,Rakta Meda Roga,N091,3D20,Chemotherapy
+Lymphoma,Rakta Majja Roga,N092,3E30,Chemotherapy
+Myeloma,Rakta Majja Roga,N093,3F40,Chemotherapy
+HIV/AIDS,Pranavaha Shvasa Nija,N094,1G10,Antiretrovirals
