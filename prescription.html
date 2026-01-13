@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prescription - AYUSH Connect EHR</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Lexend', sans-serif; }
+body { background:#f5f7fa; color:#222; }
+.container { display:flex; min-height:100vh; }
+.sidebar { width:230px; background:#fff; border-right:1px solid #eee; padding:20px; display:flex; flex-direction:column; }
+.logo { font-size:22px; font-weight:700; color:#c62828; margin-bottom:30px; }
+.logo span { color:#000; }
+.menu { list-style:none; padding:0; }
+.menu li { margin:12px 0; }
+.menu a { text-decoration:none; color:#333; font-weight:500; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px; transition:all 0.3s; }
+.menu a:hover { background:#fdeaea; color:#c62828; }
+.content { flex:1; display:flex; flex-direction:column; }
+.topbar { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 20px; border-bottom:1px solid #eee; }
+.topbar input { width:60%; padding:8px 12px; border:1px solid #ddd; border-radius:8px; }
+.user-icon { font-size:22px; }
+.main-section { padding:20px; overflow-y:auto; }
+.form-card { background:#fff; padding:25px; border-radius:12px; box-shadow:0 1px 6px rgba(0,0,0,0.05); max-width:850px; margin:auto; }
+.form-card h2 { color:#c62828; margin-bottom:20px; }
+.form-group { margin-bottom:15px; display:flex; flex-direction:column; }
+.form-group label { font-weight:500; margin-bottom:5px; }
+.form-group input, .form-group textarea, .form-group select { padding:10px; border:1px solid #ddd; border-radius:8px; font-size:14px; width:100%; }
+.form-group textarea { resize:none; height:80px; }
+.form-group button { background:#c62828; color:white; border:none; padding:12px; border-radius:8px; font-size:16px; cursor:pointer; transition:all 0.3s; }
+.form-group button:hover { background:#e53935; }
+
+/* Autocomplete */
+.autocomplete-suggestions { border:1px solid #ddd; border-radius:8px; background:#fff; max-height:250px; overflow-y:auto; position:absolute; z-index:10; width:100%; }
+.suggestion-card { display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee; cursor:pointer; transition:all 0.2s; }
+.suggestion-card:hover { background:#fdeaea; color:#c62828; }
+.suggestion-item { flex:1; text-align:center; font-size:13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div class="logo">AYUSH <span>Connect</span></div>
+    <ul class="menu">
+      <li><a href="/"><i class="fas fa-home"></i>Dashboard</a></li>
+      <li><a href="/add_patient"><i class="fas fa-user-plus"></i>Add Patient</a></li>
+      <li><a href="/patient_records"><i class="fas fa-folder-open"></i>Patient Records</a></li>
+      <li><a href="#"><i class="fas fa-user-md"></i>Doctors</a></li>
+      <li><a href="/prescription"><i class="fas fa-pills"></i>Prescriptions</a></li>
+      <li><a href="#"><i class="fas fa-brain"></i>NAMASTE Code</a></li>
+      <li><a href="#"><i class="fas fa-globe"></i>ICD-11</a></li>
+      <li><a href="#"><i class="fas fa-file-medical"></i>Diagnosis</a></li>
+      <li><a href="#"><i class="fas fa-hospital"></i>Wards</a></li>
+      <li><a href="#"><i class="fas fa-money-bill"></i>Billing</a></li>
+      <li><a href="#"><i class="fas fa-chart-bar"></i>Reports</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <input type="text" placeholder="Search patient, doctor, record...">
+      <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+    </header>
+
+    <section class="main-section">
+      <div class="form-card">
+        <h2>Write Prescription</h2>
+
+        <div class="form-group">
+          <label for="patient">Select Patient</label>
+          <select id="patient">
+            <option value="">-- Select Patient --</option>
+            {% for patient in patients %}
+              <option value="{{ patient.id }}">{{ patient.name }} (ID: {{ patient.id }})</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group" style="position:relative;">
+          <label for="disease">Disease (English Name)</label>
+          <input type="text" id="disease" placeholder="Type disease name...">
+          <div class="autocomplete-suggestions" id="suggestions"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="ayushname">AYUSH Name</label>
+          <input type="text" id="ayushname" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="namaste">NAMASTE Code</label>
+          <input type="text" id="namaste" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="icd11">ICD-11 Code</label>
+          <input type="text" id="icd11" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="biomedicine">Biomedicine</label>
+          <input type="text" id="biomedicine" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Write patient description..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="medication">Medication</label>
+          <textarea id="medication" placeholder="Write prescribed medication..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <button id="savePrescription">Save Prescription</button>
+          <div id="successMsg" style="margin-top:10px; color:green; font-weight:500;"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const diseaseInput = document.getElementById('disease');
+const ayushInput = document.getElementById('ayushname');
+const namasteInput = document.getElementById('namaste');
+const icd11Input = document.getElementById('icd11');
+const biomedicineInput = document.getElementById('biomedicine');
+const descriptionInput = document.getElementById('description');
+const medicationInput = document.getElementById('medication');
+const patientSelect = document.getElementById('patient');
+const suggestions = document.getElementById('suggestions');
+const successMsg = document.getElementById('successMsg');
+
+let debounceTimer;
+
+diseaseInput.addEventListener('input', () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(fetchSuggestions, 300);
+});
+
+async function fetchSuggestions() {
+  const val = diseaseInput.value.trim();
+  if (!val) { suggestions.innerHTML = ''; return; }
+
+  try {
+    const res = await fetch(`/disease_suggestions?q=${val}`);
+    const diseases = await res.json();
+    suggestions.innerHTML = '';
+
+    diseases.forEach(d => {
+      const card = document.createElement('div');
+      card.classList.add('suggestion-card');
+      card.textContent = `${d.english_name || '-'} | ${d.ayush_name || '-'} | ${d.namaste || '-'} | ${d.icd11 || '-'} | ${d.biomedicine || '-'}`;
+      
+      card.addEventListener('click', () => {
+        diseaseInput.value = d.english_name || '';
+        ayushInput.value = d.ayush_name || '';
+        namasteInput.value = d.namaste || '';
+        icd11Input.value = d.icd11 || '';
+        biomedicineInput.value = d.biomedicine || '';
+        suggestions.innerHTML = '';
+      });
+      suggestions.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error('Error fetching suggestions:', err);
+  }
+}
+
+document.getElementById('savePrescription').addEventListener('click', async () => {
+  const patientId = patientSelect.value;
+  const disease = diseaseInput.value.trim();
+  const namaste = namasteInput.value.trim();
+  const icd11 = icd11Input.value.trim();
+  const biomedicine = biomedicineInput.value.trim();
+  const description = descriptionInput.value.trim();
+  const medication = medicationInput.value.trim();
+
+  if (!patientId || !disease) {
+    alert('Select patient and disease!');
+    return;
+  }
+
+  try {
+    const res = await fetch('/save_prescription', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ patientId, disease, namaste, icd11, biomedicine, description, medication })
+    });
+    const data = await res.json();
+    if (data.status === 'success') {
+      successMsg.textContent = "Prescription saved successfully!";
+      patientSelect.value = '';
+      diseaseInput.value = '';
+      ayushInput.value = '';
+      namasteInput.value = '';
+      icd11Input.value = '';
+      biomedicineInput.value = '';
+      descriptionInput.value = '';
+      medicationInput.value = '';
+      suggestions.innerHTML = '';
+      setTimeout(() => successMsg.textContent = '', 3000);
+    } else {
+      alert('Failed to save prescription: ' + (data.message || 'Unknown error'));
+    }
+  } catch (err) {
+    console.error('Error saving prescription:', err);
+    alert('Failed to save prescription!');
+  }
+});
+</script>
+</body>
+</html>
