@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AYUSH Connect EHR</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">AYUSH <span>Connect</span></div>
+      <ul class="menu">
+        <li><a href="/">🏠 Dashboard</a></li>
+        <li><a href="/add_patient">➕ Add Patient</a></li>
+        <li><a href="#">📁 Patient Records</a></li>
+        <li><a href="#">👨‍⚕️ Doctors</a></li>
+        <li><a href="/prescription">💊 Prescriptions</a></li>
+        <li><a href="#">🧠 NAMASTE Code</a></li>
+        <li><a href="#">🌍 ICD-11</a></li>
+        <li><a href="#">🧾 Diagnosis</a></li>
+        <li><a href="#">🏥 Wards</a></li>
+        <li><a href="#">💰 Billing</a></li>
+        <li><a href="#">📊 Reports</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header class="topbar">
+        <input type="text" placeholder="Search patient, doctor, record...">
+        <div class="user-icon">👤</div>
+      </header>
+
+      <section class="main-section">
+        {% block content %}{% endblock %}
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const d = new Date();
+    const dateElem = document.createElement('div');
+    dateElem.innerText = d.toDateString();
+    dateElem.style.position = 'absolute';
+    dateElem.style.top = '10px';
+    dateElem.style.right = '20px';
+    dateElem.style.color = '#c62828';
+    document.body.appendChild(dateElem);
+  </script>
+</body>
+</html>
