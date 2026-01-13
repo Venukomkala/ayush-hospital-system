@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Records - AYUSH Connect EHR</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Lexend', sans-serif; }
+body { background:#f5f7fa; color:#222; }
+.container { display:flex; min-height:100vh; }
+.sidebar { width:230px; background:#fff; border-right:1px solid #eee; padding:20px; display:flex; flex-direction:column; }
+.logo { font-size:22px; font-weight:700; color:#c62828; margin-bottom:30px; }
+.logo span { color:#000; }
+.menu { list-style:none; padding:0; }
+.menu li { margin:12px 0; }
+.menu a { text-decoration:none; color:#333; font-weight:500; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px; transition:all 0.3s; }
+.menu a:hover { background:#fdeaea; color:#c62828; }
+.content { flex:1; display:flex; flex-direction:column; }
+.topbar { display:flex; justify-content:flex-end; align-items:center; background:#fff; padding:10px 20px; border-bottom:1px solid #eee; }
+.user-icon { font-size:22px; }
+.main-section { padding:20px; overflow-y:auto; }
+.table-card { background:#fff; padding:25px; border-radius:12px; box-shadow:0 1px 6px rgba(0,0,0,0.05); max-width:1000px; margin:auto; }
+.table-card h2 { color:#c62828; margin-bottom:20px; }
+#searchInput { padding:10px; width:100%; border:1px solid #ddd; border-radius:8px; margin-bottom:15px; font-size:14px; }
+table { width:100%; border-collapse:collapse; }
+th, td { padding:12px; text-align:left; border-bottom:1px solid #eee; }
+th { background:#fdeaea; color:#c62828; }
+tr:hover { background:#fce8e8; }
+</style>
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div class="logo">AYUSH <span>Connect</span></div>
+    <ul class="menu">
+      <li><a href="/"><i class="fas fa-home"></i>Dashboard</a></li>
+      <li><a href="/add_patient"><i class="fas fa-user-plus"></i>Add Patient</a></li>
+      <li><a href="/patient_records"><i class="fas fa-folder-open"></i>Patient Records</a></li>
+      <li><a href="/prescription"><i class="fas fa-pills"></i>Prescriptions</a></li>
+      <li><a href="#"><i class="fas fa-user-md"></i>Doctors</a></li>
+      <li><a href="#"><i class="fas fa-brain"></i>NAMASTE Code</a></li>
+      <li><a href="#"><i class="fas fa-globe"></i>ICD-11</a></li>
+      <li><a href="#"><i class="fas fa-file-medical"></i>Diagnosis</a></li>
+      <li><a href="#"><i class="fas fa-hospital"></i>Wards</a></li>
+      <li><a href="#"><i class="fas fa-money-bill"></i>Billing</a></li>
+      <li><a href="#"><i class="fas fa-chart-bar"></i>Reports</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+    </header>
+
+    <section class="main-section">
+      <div class="table-card">
+        <h2>Patient Records</h2>
+        <input type="text" id="searchInput" placeholder="Search by ID, Name, or Phone...">
+        <table id="patientTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Phone</th>
+              <th>Disease</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for patient in patients %}
+            <tr>
+              <td>{{ patient.id }}</td>
+              <td>{{ patient.name }}</td>
+              <td>{{ patient.age }}</td>
+              <td>{{ patient.contact }}</td>
+              <td>{{ patient.disease }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+// Live search filter
+const searchInput = document.getElementById('searchInput');
+const table = document.getElementById('patientTable').getElementsByTagName('tbody')[0];
+
+searchInput.addEventListener('keyup', () => {
+    const filter = searchInput.value.toLowerCase();
+    Array.from(table.rows).forEach(row => {
+        const id = row.cells[0].textContent.toLowerCase();
+        const name = row.cells[1].textContent.toLowerCase();
+        const phone = row.cells[3].textContent.toLowerCase();
+        row.style.display = (id.includes(filter) || name.includes(filter) || phone.includes(filter)) ? '' : 'none';
+    });
+});
+</script>
+</body>
+</html>
